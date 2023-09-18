@@ -1,9 +1,16 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
+import MySearchBar from '../components/mySearchBar/MySearchBar';
+import ScreenStyle from './ScreenStyle';
 
 const CountryList = () => {
+
     return (
-        <Text>Hello World!</Text>
+        <View style={ScreenStyle.background}>
+            <View style={ScreenStyle.mySearchBar}>
+                <MySearchBar></MySearchBar>
+            </View>
+        </View>
     );
 }
 
