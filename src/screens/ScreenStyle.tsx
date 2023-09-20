@@ -10,6 +10,10 @@ const ScreenStyle = StyleSheet.create({
         height: '100%',
         backgroundColor: '#FAF1E4',
     },
+    countrySelectionCard: {
+        justifyContent: "center",
+        alignItems: 'center'
+    },
 });
 
 export default ScreenStyle;

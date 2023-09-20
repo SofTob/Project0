@@ -1,0 +1,56 @@
+{
+    "countries":[
+        {
+            "id":1,
+            "name":"United States",
+            "code":"US"
+        },
+        {
+            "id":2,
+            "name":"Canada",
+            "code":"CA"
+        },
+        {
+            "id":3,
+            "name":"United Kingdom",
+            "code":"UK"
+        },
+        {
+            "id":4,
+            "name":"France",
+            "code":"FR"
+        },
+        {
+            "id":5,
+            "name":"Germany",
+            "code":"DE"
+        },
+        {
+            "id":6,
+            "name":"Norway",
+            "code":"NO"
+        }
+    ],
+    "cities":[
+        {
+            "id":1,
+            "name":"New York",
+            "country_id":1
+        },
+        {
+            "id":2,
+            "name":"Los Angeles",
+            "country_id":1
+        },
+        {
+            "id":3,
+            "name":"Toronto",
+            "country_id":2
+        },
+        {
+            "id":4,
+            "name":"London",
+            "country_id":3
+        }
+    ]
+}
