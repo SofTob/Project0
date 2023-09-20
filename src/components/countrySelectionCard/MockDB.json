@@ -14,6 +14,21 @@
             "id":3,
             "name":"United Kingdom",
             "code":"UK"
+        },
+        {
+            "id":4,
+            "name":"France",
+            "code":"FR"
+        },
+        {
+            "id":5,
+            "name":"Germany",
+            "code":"DE"
+        },
+        {
+            "id":6,
+            "name":"Norway",
+            "code":"NO"
         }
     ],
     "cities":[

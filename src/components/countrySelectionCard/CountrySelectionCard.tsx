@@ -4,14 +4,21 @@ import { CountrySelectionCardStyle } from "./CountrySelectionCardStyle";
 
 const mockData = require('./MockDB.json');
 
-const CountrySelectionCard = () => {
-    const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+interface CountrySelectionCardProps {
+    countryName: string;
+    isOpen: boolean;
+    onToggle: () => void;
+}
+
+const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName, isOpen, onToggle }) => {
+    
+    const [isDropDownOpen, setIsDropDownOpen] = useState(false);     
 
     return(
         <View style = {CountrySelectionCardStyle.countryCardContainer}>
             <View style = {CountrySelectionCardStyle.namecontainer}>
                 <Text style={CountrySelectionCardStyle.countryName}>
-                    {"CountrySelectionCard"}
+                    {countryName}
                 </Text>
                 <TouchableOpacity
                     style={CountrySelectionCardStyle.button}
@@ -22,10 +29,11 @@ const CountrySelectionCard = () => {
                     </Text>
                 </TouchableOpacity>
             </View>
-            
+
             {isDropDownOpen && (
                 <View style={CountrySelectionCardStyle.dropDownContainer}>
                     <FlatList
+                        contentContainerStyle={{ padding: 0, margin: 0 }}
                         data={mockData.cities}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item }) => (

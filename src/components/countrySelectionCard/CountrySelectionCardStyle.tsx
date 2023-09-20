@@ -10,7 +10,9 @@ export const CountrySelectionCardStyle = StyleSheet.create({
         backgroundColor: "#9EB384",
         borderRadius: 10,
         padding: 10,
-        margin: 10,
+        marginTop: 10,
+        marginLeft: 10,
+        marginRight: 10,
         width: "82%",
         justifyContent: "space-between",
     },
@@ -28,12 +30,15 @@ export const CountrySelectionCardStyle = StyleSheet.create({
         fontWeight: "bold",
     },
     dropDownName: {
-        
+        color: "#435334",
+        padding: 10,
     },
     dropDownContainer: {
-        backgroundColor: "#9EB384",
+        backgroundColor: "#CEDEBD",
         alignItems: "center",
-        width: "82%",
+        width: "70%",
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
     }
 });
 
