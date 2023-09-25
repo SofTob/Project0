@@ -14,6 +14,10 @@ const ScreenStyle = StyleSheet.create({
         justifyContent: "center",
         alignItems: 'center'
     },
+    aboutSection: {
+        marginHorizontal: 30,
+        marginTop: 30,
+    },
 });
 
 export default ScreenStyle;
