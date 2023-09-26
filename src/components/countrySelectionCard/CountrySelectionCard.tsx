@@ -1,6 +1,9 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { CountrySelectionCardStyle } from "./CountrySelectionCardStyle";
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProp } from '@react-navigation/native';
+
 
 const mockData = require('./MockDB.json');
 
@@ -14,6 +17,12 @@ interface CountrySelectionCardProps {
     onToggle: () => void;
 }
 
+type RootStackParamList = {
+    CountryList: undefined;
+    ExperienceListScreen: undefined;
+    // ExperiencePost: undefined;  // Uncomment this if you plan on using it later
+  };
+
 /**
  * Displays a card with the country name and a dropdown feature to view more details.
  * 
@@ -24,7 +33,8 @@ interface CountrySelectionCardProps {
  */
 
 const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName, isOpen, onToggle }) => {
-    
+
+    const navigation = useNavigation<NavigationProp<RootStackParamList, 'CountryList'>>();
     return(
         <View style = {CountrySelectionCardStyle.countryCardContainer}>
             <View style = {CountrySelectionCardStyle.namecontainer}>
@@ -47,7 +57,9 @@ const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName
                         data={mockData.cities}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item }) => (
-                            <Text style={CountrySelectionCardStyle.dropDownName}>{item.name}</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('ExperienceListScreen')}>
+                                <Text style={CountrySelectionCardStyle.dropDownName}>{item.name}</Text>
+                            </TouchableOpacity>
                         )}
                     />
                 </View>
