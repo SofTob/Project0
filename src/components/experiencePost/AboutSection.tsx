@@ -7,7 +7,6 @@ const AboutSection = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}> My notes </Text>
             <TextInput
                 style={styles.input}
                 onChangeText={text => setText(text)}
@@ -23,12 +22,6 @@ const AboutSection = () => {
 const styles = StyleSheet.create ({
     container: {
         padding: 20,
-    },
-    header: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#9EB384',
-        marginBottom: 10,
     },
     input: {
         backgroundColor: '#F5F5F5',

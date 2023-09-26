@@ -5,7 +5,7 @@ import ExperiencePost from "./src/screens/ExperiencePost";
 export default function App() {
   return (
     <View>
-      <ExperiencePost></ExperiencePost>
+      <ExperiencePost id={1}/>
     </View>
   );
 }
