@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { CountrySelectionCardStyle } from "./CountrySelectionCardStyle";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const mockData = require('./MockDB.json');
 
@@ -33,10 +34,9 @@ const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName
                 <TouchableOpacity
                     style={CountrySelectionCardStyle.button}
                     onPress={onToggle}
-                >
-                    <Text style={CountrySelectionCardStyle.buttonText}>
-                        {isOpen ? 'X' : 'V'}
-                    </Text>
+                >{isOpen ? 
+                <Icon name="close" style={CountrySelectionCardStyle.buttonText}/> : 
+                <Icon name="chevron-down" style={CountrySelectionCardStyle.buttonText}/>}        
                 </TouchableOpacity>
             </View>
 
