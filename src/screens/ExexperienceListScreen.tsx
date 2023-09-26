@@ -2,7 +2,7 @@ import { View, Text, FlatList, Animated} from "react-native";
 import ScreenStyle from "./ScreenStyle";
 import MySearchBarBackIcon from "../components/mySearchbBarBackIcon/MySearchBarBackIcon";
 import ExperienceCard from "../components/exeprienceCard/ExeperienceCard";
-import { mockDB } from "../components/exeprienceCard/MockImageDB";
+import { mockDB } from "../assets/MockDB";
 
 const ExperienceListScreen = () => {
     return (
