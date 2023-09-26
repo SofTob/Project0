@@ -17,7 +17,9 @@ export default function App() {
       >
         <Stack.Screen name="CountryList" component={CountryList} />
         <Stack.Screen name="ExperienceListScreen" component={ExperienceListScreen} />
-        {/* <Stack.Screen name="ExperiencePost" component={ExperiencePost} /> */}
+        <Stack.Screen name="ExperiencePost" 
+        component={ExperiencePost} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

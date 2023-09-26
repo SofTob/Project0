@@ -3,14 +3,15 @@ import { CountrySelectionCardStyle } from "./CountrySelectionCardStyle";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProp } from '@react-navigation/native';
+import { mockDB } from "../../assets/MockDB";
 
-
-const mockData = require('./MockDB.json');
 
 //Props for the CountrySelectionCard component
 interface CountrySelectionCardProps {
     //Name of the country to be displayed
     countryName: string;
+    //Country id
+    countryId: number;
     //Whether or not the dropdown is open
     isOpen: boolean;
     //Function to toggle the dropdown
@@ -32,9 +33,10 @@ type RootStackParamList = {
  * @returns The CountrySelectionCard component
  */
 
-const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName, isOpen, onToggle }) => {
+const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName, isOpen, onToggle, countryId }) => {
 
     const navigation = useNavigation<NavigationProp<RootStackParamList, 'CountryList'>>();
+    
     return(
         <View style = {CountrySelectionCardStyle.countryCardContainer}>
             <View style = {CountrySelectionCardStyle.namecontainer}>
@@ -54,11 +56,11 @@ const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName
                 <View style={CountrySelectionCardStyle.dropDownContainer}>
                     <FlatList
                         contentContainerStyle={{ padding: 0, margin: 0 }}
-                        data={mockData.cities}
-                        keyExtractor={(item) => item.id}
+                        data={mockDB.cities}
+                        keyExtractor={(item) => item.cityId.toString()}
                         renderItem={({ item }) => (
                             <TouchableOpacity onPress={() => navigation.navigate('ExperienceListScreen')}>
-                                <Text style={CountrySelectionCardStyle.dropDownName}>{item.name}</Text>
+                                <Text style={CountrySelectionCardStyle.dropDownName}>{item.cityName}</Text>
                             </TouchableOpacity>
                         )}
                     />

@@ -3,8 +3,7 @@ import { View, FlatList} from 'react-native';
 import MySearchBar from '../components/mySearchBar/MySearchBar';
 import ScreenStyle from './ScreenStyle';
 import CountrySelectionCard from '../components/countrySelectionCard/CountrySelectionCard';
-
-const mockData = require('../components/countrySelectionCard/MockDB.json');
+import { mockDB } from '../assets/MockDB';
 
 /**
  * Displays a list of countries with a dropdown feature to view more details.
@@ -16,7 +15,7 @@ const mockData = require('../components/countrySelectionCard/MockDB.json');
 const CountryList = () => {
 
     //This is the state that will be used to keep track of which dropdown is open
-    const [openDropdownId, setOpenDropdownId] = useState<null | string>(null);
+    const [openDropdownId, setOpenDropdownId] = useState<null | number>(null);
 
     return (
         <View style={ScreenStyle.background}>
@@ -24,14 +23,15 @@ const CountryList = () => {
                 <MySearchBar></MySearchBar>
             </View>
             <FlatList
-                data={mockData.countries}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
+                data={mockDB.countries}
+                keyExtractor={(country) => country.countryId.toString()}
+                renderItem={({ item: country }) => (
                     <View style={ScreenStyle.countrySelectionCard}>
                         <CountrySelectionCard 
-                        countryName={item.name}
-                        isOpen={item.id === openDropdownId}
-                        onToggle={() => setOpenDropdownId(prev => prev === item.id ? null : item.id)}                        />
+                        countryId={country.countryId}
+                        countryName={country.countryName}
+                        isOpen={country.countryId === openDropdownId}
+                        onToggle={() => setOpenDropdownId(prev => prev === country.countryId ? null : country.countryId)}/>
                     </View>
                 )}
             />
