@@ -5,20 +5,19 @@ const MySearchBarBackIconStyle = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'center',
+        width: "100%",
     },
     searchbar: {
         flex: 1,
     },
     backIconContainer: {
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: 'green', // This is just for visualization     
-        height: 60,                
-        width: 60, 
+        paddingRight: 10,
     },
     backIcon: {
-        fontSize: 50, 
-        color: "red", 
+        fontSize: 30, 
+        color: "#9EB384", 
         fontWeight: "bold",
     },
 

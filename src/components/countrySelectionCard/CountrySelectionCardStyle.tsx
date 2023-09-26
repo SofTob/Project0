@@ -15,6 +15,7 @@ export const CountrySelectionCardStyle = StyleSheet.create({
         marginRight: 10,
         width: "82%",
         justifyContent: "space-between",
+        alignItems: "center",
     },
     countryName: {
         color: "#FAF1E4",
@@ -26,7 +27,7 @@ export const CountrySelectionCardStyle = StyleSheet.create({
     },
     buttonText: {
         color: "#FAF1E4",
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: "bold",
     },
     dropDownName: {

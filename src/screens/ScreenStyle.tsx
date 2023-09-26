@@ -14,6 +14,21 @@ const ScreenStyle = StyleSheet.create({
         justifyContent: "center",
         alignItems: 'center'
     },
+    experienceList: {
+        width: '50%',
+        paddingHorizontal: 5,
+        paddingVertical: 2.5,
+
+    },   
+    locationHeader: {
+        justifyContent: "center",
+        alignItems: 'center',
+        fontSize: 50,
+        fontWeight: 'bold',
+        marginHorizontal: 30,
+        marginVertical: 10,
+        color: '#435334',
+    },
 });
 
 export default ScreenStyle;
