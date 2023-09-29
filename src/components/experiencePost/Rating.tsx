@@ -17,7 +17,7 @@ const Rating: React.FC<RatingProps> = ({ rating }) => {
             key={i}
             name={i <= rating ? 'star' : 'star-o'} // 'star' for filled star, 'star-o' for empty star
             size={20}
-            color='#CEDEBD'
+            color='#9EB384'
         />
         );
     }
