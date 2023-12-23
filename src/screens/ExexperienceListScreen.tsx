@@ -2,15 +2,14 @@ import { View, Text, FlatList, Animated} from "react-native";
 import ScreenStyle from "./ScreenStyle";
 import MySearchBarBackIcon from "../components/mySearchbBarBackIcon/MySearchBarBackIcon";
 import ExperienceCard from "../components/exeprienceCard/ExeperienceCard";
-import { mockDB } from "../assets/MockDB";
 import { useEffect, useState } from "react";
 import { Database } from "../../database.types";
 import supabase from "../config/Supabase";
+import { RouteProps, ExperienceProp} from "../../types";
 
-const ExperienceListScreen = (props) => {
+const ExperienceListScreen = (props: RouteProps) => {
     
-    console.log(props.route.params)
-    const { cityId ,cityName} = props.route.params;
+    const { cityId, cityName} = props.route.params;
 
     const [experienceData, setExperienceData] = useState<Database['public']['Tables']['Experience']['Row'][] | null>(null);
 
@@ -37,7 +36,7 @@ const ExperienceListScreen = (props) => {
                 keyExtractor={(item) => item.city_id.toString()}
                 renderItem={({ item }) => (
                     <View style = {ScreenStyle.experienceList}>
-                        <ExperienceCard id={item.city_id} ></ExperienceCard>
+                        <ExperienceCard experienceInfo={item as ExperienceProp}  ></ExperienceCard>
                     </View>
                 )}
             ></FlatList>

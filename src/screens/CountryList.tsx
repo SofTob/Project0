@@ -3,7 +3,6 @@ import { View, FlatList} from 'react-native';
 import MySearchBar from '../components/mySearchBar/MySearchBar';
 import ScreenStyle from './ScreenStyle';
 import CountrySelectionCard from '../components/countrySelectionCard/CountrySelectionCard';
-import { mockDB } from '../assets/MockDB';
 import supabase from '../config/Supabase'
 import { Database } from "../../database.types";
 

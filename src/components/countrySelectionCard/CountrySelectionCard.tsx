@@ -7,24 +7,8 @@ import { mockDB } from "../../assets/MockDB";
 import supabase from "../../config/Supabase";
 import{ Database } from "../../../database.types"
 import { useEffect, useState } from "react";
+import { CountrySelectionCardProps, RootStackParamList } from "../../../types";
 
-//Props for the CountrySelectionCard component
-interface CountrySelectionCardProps {
-    //Name of the country to be displayed
-    countryName: string | null;
-    //Country id
-    countryId: number;
-    //Whether or not the dropdown is open
-    isOpen: boolean;
-    //Function to toggle the dropdown
-    onToggle: () => void;
-}
-
-type RootStackParamList = {
-    CountryList: undefined;
-    ExperienceListScreen: { cityId: number; cityName: string | null};
-    // ExperiencePost: undefined;  // Uncomment this if you plan on using it later
-  };
 
 /**
  * Displays a card with the country name and a dropdown feature to view more details.

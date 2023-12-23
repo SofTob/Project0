@@ -5,7 +5,6 @@ import ExperienceListScreen from "./src/screens/ExexperienceListScreen";
 import ExperiencePost from "./src/screens/ExperiencePost";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button } from "react-native-elements";
 
 
 
@@ -22,8 +21,7 @@ export default function App() {
       >
         <Stack.Screen name="CountryList" component={CountryList} />
         <Stack.Screen name="ExperienceListScreen" component={ExperienceListScreen} />
-        <Stack.Screen name="ExperiencePost" 
-        component={ExperiencePost} 
+        <Stack.Screen name="ExperiencePost" component={ExperiencePost} 
         />
       </Stack.Navigator>
     </NavigationContainer>
