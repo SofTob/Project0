@@ -22,8 +22,15 @@ Before you begin, ensure you have [Node.js](https://nodejs.org/) and [Expo CLI](
    ```bash
    npm install
    ```
+3. **Creating a `.env` file**
+   To run the project locally you need to create a file named `.env` in the root directory if the project. This file should contain the supabase url and supabase anon key like this:
+   ```JavaScript
+   REACT_APP_SUPABASE_URL ='URL here'
+   REACT_APP_SUPABASE_ANON_KEY='Key here'
 
-3. **Start the Expo Development Server:**
+   ```
+
+4. **Start the Expo Development Server:**
 
    ```bash
    npx expo start
