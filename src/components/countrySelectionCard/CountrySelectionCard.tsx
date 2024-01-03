@@ -4,25 +4,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProp } from '@react-navigation/native';
 import { mockDB } from "../../assets/MockDB";
+import supabase from "../../config/Supabase";
+import{ Database } from "../../../database.types"
+import { useEffect, useState } from "react";
+import { CountrySelectionCardProps, RootStackParamList } from "../../../types";
 
-
-//Props for the CountrySelectionCard component
-interface CountrySelectionCardProps {
-    //Name of the country to be displayed
-    countryName: string;
-    //Country id
-    countryId: number;
-    //Whether or not the dropdown is open
-    isOpen: boolean;
-    //Function to toggle the dropdown
-    onToggle: () => void;
-}
-
-type RootStackParamList = {
-    CountryList: undefined;
-    ExperienceListScreen: undefined;
-    // ExperiencePost: undefined;  // Uncomment this if you plan on using it later
-  };
 
 /**
  * Displays a card with the country name and a dropdown feature to view more details.
@@ -36,6 +22,27 @@ type RootStackParamList = {
 const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName, isOpen, onToggle, countryId }) => {
 
     const navigation = useNavigation<NavigationProp<RootStackParamList, 'CountryList'>>();
+    const [cityData, setCityData] =useState<Database['public']['Tables']['Cities']['Row'][] | null>(null);
+
+    const getCityInfo = async (country_id: number) => {
+        const { data, error } = await supabase
+            .from('Cities')
+            .select('*')
+            .eq('country_id', country_id);
+
+        if (error) {
+            console.error('Error fetching cities:', error);
+            return;
+        }
+
+        setCityData(data);
+    }
+
+    
+    const handleClick = (country_id: number) => {
+        getCityInfo(country_id)
+        onToggle()
+    }
     
     return(
         <View style = {CountrySelectionCardStyle.countryCardContainer}>
@@ -45,7 +52,7 @@ const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName
                 </Text>
                 <TouchableOpacity
                     style={CountrySelectionCardStyle.button}
-                    onPress={onToggle}
+                    onPress={()=>handleClick(countryId)}
                 >{isOpen ? 
                 <Icon name="close" style={CountrySelectionCardStyle.buttonText}/> : 
                 <Icon name="chevron-down" style={CountrySelectionCardStyle.buttonText}/>}        
@@ -56,11 +63,14 @@ const CountrySelectionCard: React.FC<CountrySelectionCardProps> = ({ countryName
                 <View style={CountrySelectionCardStyle.dropDownContainer}>
                     <FlatList
                         contentContainerStyle={{ padding: 0, margin: 0 }}
-                        data={mockDB.cities}
-                        keyExtractor={(item) => item.cityId.toString()}
+                        data={cityData}
+                        keyExtractor={(item) => item.city_id.toString()}
                         renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => navigation.navigate('ExperienceListScreen')}>
-                                <Text style={CountrySelectionCardStyle.dropDownName}>{item.cityName}</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('ExperienceListScreen', {
+                                cityId: item.city_id,
+                                cityName: item.city_name
+                            })}>
+                                <Text style={CountrySelectionCardStyle.dropDownName}>{item.city_name}</Text>
                             </TouchableOpacity>
                         )}
                     />

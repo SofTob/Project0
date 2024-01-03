@@ -1,40 +1,36 @@
 import { View, Text, TouchableOpacity, ImageBackground } from "react-native";
 import { ExeperienceCardStyle } from "./ExperienceCardStyle";
-import { mockDB } from "../../assets/MockDB";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationProp } from '@react-navigation/native';
+import { ExperienceCardProps, RootStackParamList } from "../../../types";
+import supabase from "../../config/Supabase";
 
 
-interface ExperienceCardProps {
-    id: number; // or string
-}
 
-type RootStackParamList = {
-    CountryList: undefined;
-    ExperienceListScreen: undefined;
-    ExperiencePost: { id: number };  // Here
-};
-
-
-const ExperienceCard:  React.FC<ExperienceCardProps>= ({id}) => {
+const ExperienceCard:  React.FC<ExperienceCardProps>= ({experienceInfo}) => {
 
     const navigation = useNavigation<NavigationProp<RootStackParamList, 'ExperiencePost'>>();
 
+    let imageURL: string = '';
 
-    const experience = mockDB.experiences.find((experience) => experience.id === id);
+    if (experienceInfo?.image_url) {
+        const response = supabase.storage.from('My_images').getPublicUrl(experienceInfo.image_url as string);
+        imageURL = response.data?.publicUrl;
+    }
 
+    
     return(
         <TouchableOpacity 
-            onPress={() => {navigation.navigate('ExperiencePost', { id: id });
+            onPress={() => {navigation.navigate('ExperiencePost', { experienceInfo: experienceInfo, imageURL });
         }}
             style={ExeperienceCardStyle.cardContainer}>
                 <ImageBackground
-                    source={experience?.imageURL}
+                    source={{ uri: imageURL}}
                     style={ExeperienceCardStyle.imageBackground}
                     resizeMode="cover"
                 />
             <View>
-                <Text style = {ExeperienceCardStyle.experienceTitle}>{experience?.title}</Text>
+                <Text style = {ExeperienceCardStyle.experienceTitle}>{experienceInfo?.experience_name}</Text>
             </View>
         </TouchableOpacity>
     );
