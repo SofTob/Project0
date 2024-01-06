@@ -16,15 +16,18 @@ const ScreenStyle = StyleSheet.create({
         alignItems: 'center'
     },
     // ExperiencePost
-    image: {
-        width: '100%', 
-        height: 500,
-    },
     container: {
-        margin: 20,
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        margin: 20,
+        marginBottom: 0,
+        padding: 20,
+    },
+    image: {
+        width: '100%', 
+        height: 500,
     },
     title: {
         fontSize: 28,
@@ -32,6 +35,7 @@ const ScreenStyle = StyleSheet.create({
         color: '#9EB384',
     },
     about: {
+        flex: 1,
         margin: 20,
         marginTop: 0,
         backgroundColor: '#F5F5F5',
@@ -42,11 +46,11 @@ const ScreenStyle = StyleSheet.create({
         fontSize: 14,
         color: 'black', 
     },
+    // ExperienceList
     experienceList: {
         width: '50%',
         paddingHorizontal: 5,
         paddingVertical: 2.5,
-
     },   
     locationHeader: {
         justifyContent: "center",
